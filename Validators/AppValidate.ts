@@ -1,4 +1,4 @@
-import { CheckMax, CheckMin } from "./Checkers/BooleanCheckers";
+import { CheckMax, CheckMin } from "./Checkers/NumbersCheckers";
 import { isAfterToday } from "./Checkers/TimeCheckers";
 import {
   IAppValidatorUnit,
