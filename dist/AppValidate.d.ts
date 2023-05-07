@@ -1,4 +1,5 @@
-import { IAppValidatorUnit, ValidationResultOfUnit } from "./IValidators/IValidators";
+import { IAppValidatorUnit } from "./IValidators/IValidators";
+import ValidationResultOfUnit from "./IValidators/IValidators";
 /**
  * this the main validate function
  * it gets array of key and object represent the roles of validation

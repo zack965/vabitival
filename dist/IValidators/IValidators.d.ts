@@ -1,5 +1,5 @@
 import { AppValidatorUnitValidationRoles } from "../Types/ValidationTypes";
-export interface ValidationResultOfUnit {
+export default interface ValidationResultOfUnit {
     isValid: boolean;
     errors?: string[];
     value: string;

@@ -23,3 +23,13 @@ export const CheckMax = (value: string | number, param: string): boolean => {
   }
   return true;
 };
+export const CheckRangeNumber = (
+  min: number,
+  max: number,
+  value: number
+): boolean => {
+  if (value > min && value < max) {
+    return true;
+  }
+  return false;
+};

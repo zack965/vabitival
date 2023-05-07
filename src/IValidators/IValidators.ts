@@ -1,7 +1,7 @@
 import { AppValidatorUnitValidationRoles } from "../Types/ValidationTypes";
 
 // this interface represent the state of the validation
-export interface ValidationResultOfUnit {
+export default interface ValidationResultOfUnit {
   isValid: boolean;
   errors?: string[];
   value: string;

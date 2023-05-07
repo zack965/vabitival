@@ -1,5 +1,6 @@
 // Importing the Moment library to work with dates and times
 import moment from "moment";
+/* let moment = require("moment"); */
 
 // This function receives a string representing a date and checks if it is valid
 // according to the "YYYY-MM-DD" format. It returns a boolean indicating if the date is valid.
