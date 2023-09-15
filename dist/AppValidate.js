@@ -3,21 +3,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Validate = void 0;
 var NumbersCheckers_1 = require("./Checkers/NumbersCheckers");
 var TimeCheckers_1 = require("./Checkers/TimeCheckers");
-/**
- * this the main validate function
- * it gets array of key and object represent the roles of validation
- * and it return the state of validation
- */
+/* export interface ValidateOutput {
+  [key: string]: {
+    ValidateOutput: ValidateOutputUnit;
+  };
+} */
 var Validate = function (data) {
+    //console.log("jjjjj");
+    //ValidationResultOfUnit[]
     var ValidationData = [];
+    var ValidateOutputUnit = [];
     for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
         var validator = data_1[_i];
+        var key = validator.key;
         for (var _a = 0, _b = validator.validationRoles; _a < _b.length; _a++) {
             var role = _b[_a];
             var results = validateValue(role, validator.value, validator.key);
-            ValidationData.push(results);
+            //console.log(results);
+            if (!results.isValid) {
+                ValidationData.push(results);
+            }
         }
+        ValidateOutputUnit.push({
+            state: ValidationData.length == 0 ? true : false,
+            data: ValidationData,
+            key: key,
+        });
+        ValidationData = [];
     }
+    return ValidateOutputUnit;
     /* for (const key in data) {
       const unit = data[key];
   
@@ -26,7 +40,20 @@ var Validate = function (data) {
         ValidationData.push(results);
       }
     } */
-    return ValidationData;
+    //console.log(ValidationData);
+    /* if (ValidationData.length == 0) {
+      let final_output: ValidateOutput = {
+        state: true,
+        data: ValidationData,
+      };
+      return final_output;
+    }
+    let final_output: ValidateOutput = {
+      state: false,
+      data: ValidationData,
+    };
+    return final_output; */
+    //return ValidationData;
 };
 exports.Validate = Validate;
 /**

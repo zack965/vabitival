@@ -12,16 +12,38 @@ import {
  * it gets array of key and object represent the roles of validation
  * and it return the state of validation
  */
-export const Validate = (
-  data: IAppValidatorUnit[]
-): ValidationResultOfUnit[] => {
-  const ValidationData: ValidationResultOfUnit[] = [];
+export interface ValidateOutputUnit {
+  key: string;
+  state: boolean;
+  data: ValidationResultOfUnit[];
+}
+/* export interface ValidateOutput {
+  [key: string]: {
+    ValidateOutput: ValidateOutputUnit;
+  };
+} */
+export const Validate = (data: IAppValidatorUnit[]): ValidateOutputUnit[] => {
+  //console.log("jjjjj");
+  //ValidationResultOfUnit[]
+  let ValidationData: ValidationResultOfUnit[] = [];
+  const ValidateOutputUnit: ValidateOutputUnit[] = [];
   for (const validator of data) {
+    const key = validator.key;
     for (const role of validator.validationRoles) {
       const results = validateValue(role, validator.value, validator.key);
-      ValidationData.push(results);
+      //console.log(results);
+      if (!results.isValid) {
+        ValidationData.push(results);
+      }
     }
+    ValidateOutputUnit.push({
+      state: ValidationData.length == 0 ? true : false,
+      data: ValidationData,
+      key: key,
+    });
+    ValidationData = [];
   }
+  return ValidateOutputUnit;
   /* for (const key in data) {
     const unit = data[key];
 
@@ -30,7 +52,20 @@ export const Validate = (
       ValidationData.push(results);
     }
   } */
-  return ValidationData;
+  //console.log(ValidationData);
+  /* if (ValidationData.length == 0) {
+    let final_output: ValidateOutput = {
+      state: true,
+      data: ValidationData,
+    };
+    return final_output;
+  }
+  let final_output: ValidateOutput = {
+    state: false,
+    data: ValidationData,
+  };
+  return final_output; */
+  //return ValidationData;
 };
 
 /**

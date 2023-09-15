@@ -5,4 +5,9 @@ import ValidationResultOfUnit from "./IValidators/IValidators";
  * it gets array of key and object represent the roles of validation
  * and it return the state of validation
  */
-export declare const Validate: (data: IAppValidatorUnit[]) => ValidationResultOfUnit[];
+export interface ValidateOutputUnit {
+    key: string;
+    state: boolean;
+    data: ValidationResultOfUnit[];
+}
+export declare const Validate: (data: IAppValidatorUnit[]) => ValidateOutputUnit[];

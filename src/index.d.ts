@@ -1,3 +1,3 @@
 import ValidationResultOfUnit from "./IValidators/IValidators";
-
-export { ValidationResultOfUnit };
+import { Validate, ValidateOutput } from "./AppValidate";
+export { ValidationResultOfUnit, Validate, ValidateOutput };

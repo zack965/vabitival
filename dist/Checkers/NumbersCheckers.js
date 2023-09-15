@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CheckRangeNumber = exports.CheckMax = exports.CheckMin = void 0;
 var CheckMin = function (value, param) {
     if (typeof value === "string") {
-        if (value.length > parseInt(param)) {
+        if (value.length < parseInt(param)) {
             return false;
         }
     }
     if (typeof value === "number") {
-        if (value > parseInt(param)) {
+        if (value < parseInt(param)) {
             return false;
         }
     }

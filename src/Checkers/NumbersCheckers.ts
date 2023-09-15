@@ -1,11 +1,11 @@
 export const CheckMin = (value: string | number, param: string): boolean => {
   if (typeof value === "string") {
-    if (value.length > parseInt(param)) {
+    if (value.length < parseInt(param)) {
       return false;
     }
   }
   if (typeof value === "number") {
-    if (value > parseInt(param)) {
+    if (value < parseInt(param)) {
       return false;
     }
   }
